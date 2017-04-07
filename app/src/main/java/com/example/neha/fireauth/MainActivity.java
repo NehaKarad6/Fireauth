@@ -110,9 +110,19 @@ public class MainActivity extends AppCompatActivity {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
+
+                String personName = account.getDisplayName();
+                String personEmail = account.getEmail();
+                String personId = account.getId();
+                String msg=("Logged in to : "+personEmail);
+                Toast.makeText(MainActivity.this, msg,
+                        Toast.LENGTH_LONG).show();
+
             } else {
                 // Google Sign In failed, update UI appropriately
                 // ...
+                Toast.makeText(MainActivity.this, "SignIn Failed.",
+                        Toast.LENGTH_LONG).show();
             }
         }
     }
